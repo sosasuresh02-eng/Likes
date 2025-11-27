@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Only Like Counter</title>
+
+<style>
+html,body{
+    height:100%;
+    margin:0;
+    background:transparent;
+}
+
+/* Visible box — yahi par like number dikhega */
+.counter-box{
+    width:250px;     /* visible width */
+    height:120px;    /* visible height */
+    overflow:hidden;
+    position:relative;
+    background:transparent;
+}
+
+/* Iframe ko shift karke sirf LIKE COUNTER वाला हिस्सा दिखाया */
+.counter-box iframe{
+    position:absolute;
+    left:-230px;      /* horizontal adjust */
+    top:-300px;      /* THIS POSITION shows LIKE counter only */
+    width:1050px;
+    height:1200px;
+    border:0;
+    background:transparent !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="counter-box">
+    <iframe 
+        src="https://youtubelikecounter.com/#!/-DM5_A-j6N4"
+        allowtransparency="true"
+        scrolling="no">
+    </iframe>
+</div>
+
+</body>
+</html>
