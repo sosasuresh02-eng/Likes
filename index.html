@@ -19,9 +19,9 @@ html,body{
     position:relative;
     border-radius:20px;
 
-    /* Starting me hidden */
+    /* starting me hide */
     opacity:0;
-    transition: opacity 0.8s ease;
+    transition: opacity 1s ease;
 }
 
 .counter-box iframe{
@@ -40,6 +40,7 @@ html,body{
 
 <div class="counter-box" id="counterBox">
     <iframe 
+        id="myFrame"
         src="https://youtubelikecounter.com/#!/3nYlzEcCwI0"
         allowtransparency="true"
         scrolling="no">
@@ -47,13 +48,18 @@ html,body{
 </div>
 
 <script>
-// 30 seconds
-const HIDE_TIME = 30000;
+const HIDE_TIME = 30000; // 30 seconds
 
-// Page load par 30 sec baad show
-setTimeout(() => {
-    document.getElementById("counterBox").style.opacity = "1";
-}, HIDE_TIME);
+// IFRAME load hone ka wait karte hain
+document.getElementById("myFrame").addEventListener("load", function () {
+
+    // Starting 30 sec tak hidden (opacity 0)
+    setTimeout(() => {
+        // 30 sec ke baad fade-in
+        document.getElementById("counterBox").style.opacity = "1";
+    }, HIDE_TIME);
+
+});
 </script>
 
 </body>
