@@ -19,19 +19,9 @@ html,body{
     position:relative;
     border-radius:20px;
 
-    /* Fade animation */
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transition:opacity 0.6s ease, visibility 0s linear 0.6s;
-}
-
-/* Hidden state (fade out + actual hide) */
-.counter-hidden{
+    /* Starting me hidden */
     opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition:opacity 0.6s ease, visibility 0s linear 0s;
+    transition: opacity 0.8s ease;
 }
 
 .counter-box iframe{
@@ -57,26 +47,13 @@ html,body{
 </div>
 
 <script>
-// 30 seconds = 30000 ms
+// 30 seconds
 const HIDE_TIME = 30000;
 
-function hideCounter() {
-    const box = document.getElementById("counterBox");
-
-    // fade-out + hide
-    box.classList.add("counter-hidden");
-
-    // 30 sec baad fade-in + show
-    setTimeout(() => {
-        box.classList.remove("counter-hidden");
-    }, HIDE_TIME);
-}
-
-// ---- AUTO TEST (page load par hide) ----
-// hideCounter();
-
-// ---- MANUAL TEST ----
-// browser console me likho: hideCounter();
+// Page load par 30 sec baad show
+setTimeout(() => {
+    document.getElementById("counterBox").style.opacity = "1";
+}, HIDE_TIME);
 </script>
 
 </body>
