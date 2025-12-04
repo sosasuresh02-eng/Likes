@@ -12,21 +12,27 @@ html,body{
     background:transparent;
 }
 
-/* Visible box — yahi par like number dikhega */
 .counter-box{
-    width:155px;     /* visible width */
-    height:120px;    /* visible height */
+    width:155px;
+    height:120px;
     overflow:hidden;
     position:relative;
-    background:;
-  border-radius: 20px;
+    border-radius:20px;
+
+    /* Fade transition added */
+    opacity:1;
+    transition:opacity 0.7s ease;
 }
 
-/* Iframe ko shift karke sirf LIKE COUNTER वाला हिस्सा दिखाया */
+/* Hidden (fade out) */
+.counter-hidden{
+    opacity:0;
+}
+
 .counter-box iframe{
     position:absolute;
-    left:-375px;      /* horizontal adjust */
-    top:-300px;      /* THIS POSITION shows LIKE counter only */
+    left:-375px;
+    top:-300px;
     width:1200px;
     height:1200px;
     border:0;
@@ -37,10 +43,38 @@ html,body{
 
 <body>
 
-<div class="counter-box">
+<div class="counter-box" id="counterBox">
     <iframe 
         src="https://youtubelikecounter.com/#!/3nYlzEcCwI0"
         allowtransparency="true"
         scrolling="no">
     </iframe>
 </div>
+
+<script>
+// 6 minutes in milliseconds
+const HIDE_TIME = 30 * 1000;  // 360000 ms
+let hideTimer = null;
+
+function hideCounter() {
+    const box = document.getElementById("counterBox");
+
+    // fade out
+    box.classList.add("counter-hidden");
+
+    // Set timer to unhide after 6 min
+    hideTimer = setTimeout(() => {
+        box.classList.remove("counter-hidden"); // fade in
+    }, HIDE_TIME);
+}
+
+// Example: Auto-hide immediately on page load
+// hideCounter(); 
+
+// Aap apni marzi se kahin bhi hideCounter() call kar sakte ho:
+// jaise — like button press par, ya kisi event par.
+
+</script>
+
+</body>
+</html>
